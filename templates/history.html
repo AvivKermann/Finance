@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <th class= "text_start">Symbol</th>
+            <th class= "text_end">Shares</th>
+            <th class= "text_end">Price</th>
+            <th class= "text_end">Transcaded</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td class= "text_start">{{ stock.stockSymbol }}</td>
+            <td class= "text_start">{{ stock.amount }}</td>
+            <td class = "text_end">{{ stock.purchasePrice | usd }} </td>
+            <td class = "text_end">${{ stock.purchaseDate }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+    </tbody>
+</table>
+
+{% endblock %}

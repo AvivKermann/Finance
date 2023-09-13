@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <th class= "text_start">Symbol</th>
+            <th class= "text_start">Name</th>
+            <th class= "text_end">Shares</th>
+            <th class= "text_end">Price</th>
+            <th class= "text_end">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td class= "text_start">{{ stock.stockSymbol }}</td>
+            <td class= "text_start">{{ stock.name }}</td>
+            <td class = "text_end">{{ stock.amount  }} </td>
+            <td class = "text_end">{{ stock.price | usd  }}</td>
+            <td class = "text_end">{{ (stock.price * stock.amount) | usd }}</td>
+        </tr>|
+        {% endfor %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="boarder-0 table_foot text_end" colspan="4">Cash</td>
+            <td class="boarder-0 table_foot text_end" colspan="4">{{ cash }}</td>
+        </tr>
+        <tr>
+            <td class="boarder-0 table_foot text_end" colspan="4">Total</td>
+            <td class="boarder-0 table_foot text_end" colspan="4">{{ total_value }}</td>
+
+        </tr>
+        <tr>
+        </tr>
+
+    </tfoot>
+
+    </tbody>
+</table>
+<h1>Add Cash</h1>
+    <form action="/cashgrab" method="post">
+        <div class="mb-3">
+            <input autocomplete="off"  class="form-control mx-auto w-auto" id="add" class="buy" name="add" placeholder="How much?" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Add Cash</button>
+    </form>
+
+
+{% endblock %}

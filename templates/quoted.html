@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+
+{% endblock %}
+
+{% block main %}
+<table class="quoted_table">
+    <thead>
+        <tr>
+            <th class= "quoted_headers">Stock Name</th>
+            <th class= "quoted_headers">Price Per Share</th>
+            <th class= "quoted_headers">Stock Symbol</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td class = "quoted_items"> {{ symbol }}</td>
+            <td class = "quoted_items"> {{ name }}</td>
+            <td class = "quoted_items"> {{ price }}</td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+{% endblock %}
